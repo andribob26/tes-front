@@ -227,8 +227,10 @@ export default function SignInPage() {
                                 {error || errorField?.message}
                             </p>
                         )}
+
                     </div>
                 </div>
+                <div className="absolute bottom-0 w-[76] h-3 bg-primary"></div>
             </div >
         </div >
     );

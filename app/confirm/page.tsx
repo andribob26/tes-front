@@ -186,6 +186,7 @@ const ConfirmClient = () => {
 
                     </div>
                 </div>
+                <div className="absolute bottom-0 w-[227] h-3 bg-primary"></div>
             </div >
         </div >
     );
