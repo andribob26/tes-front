@@ -1,11 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import axiosInstance from "@/lib/axiosInstance";
 import formatPhoneNumber from "../utils/formatPhoneNumber";
 import Image from "next/image";
 
-export default function ConfirmPage() {
+const ConfirmClient = () => {
     const searchParams = useSearchParams();
     const router = useRouter();
 
@@ -83,7 +83,7 @@ export default function ConfirmPage() {
                     priority
                 />
                 <Image
-                    src="/assets/confirm_illustration.png"  
+                    src="/assets/confirm_illustration.png"
                     alt="Confirm illustration"
                     width={443}
                     height={0}
@@ -188,5 +188,13 @@ export default function ConfirmPage() {
                 </div>
             </div >
         </div >
+    );
+}
+
+export default function ConfirmPage() {
+    return (
+        <Suspense fallback={<p>Loading...</p>}>
+            <ConfirmClient />
+        </Suspense>
     );
 }
