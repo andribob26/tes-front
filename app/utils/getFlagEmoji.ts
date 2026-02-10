@@ -3,7 +3,7 @@ const getFlagEmoji = (countryCode: string) => {
   const codePoints = countryCode
     .toUpperCase()
     .split("")
-    .map((char) => 127397 + char.charCodeAt(0)); // 0x1F1E6 offset untuk regional indicators
+    .map((char) => 127397 + char.charCodeAt(0));
   return String.fromCodePoint(...codePoints);
 };
 
