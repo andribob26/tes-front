@@ -1,18 +1,16 @@
-// app/api/proxy/[...path]/route.ts
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   const path = request.nextUrl.pathname.replace("/api/proxy/", "");
   const targetUrl = `https://fe-technical-assignment.dxtr.asia/api/v1/${path}`;
 
-  console.log(`Proxy POST → ${targetUrl}`); // debug
+  console.log(`Proxy POST → ${targetUrl}`); 
 
   try {
     const body = await request.json();
 
-    // Forward semua header dari client (termasuk Authorization kalau ada)
     const headers = new Headers(request.headers);
-    headers.set("Content-Type", "application/json"); // pastikan json
+    headers.set("Content-Type", "application/json"); 
 
     const response = await fetch(targetUrl, {
       method: "POST",
@@ -32,10 +30,9 @@ export async function GET(request: NextRequest) {
   const path = request.nextUrl.pathname.replace("/api/proxy/", "");
   const targetUrl = `https://fe-technical-assignment.dxtr.asia/api/v1/${path}`;
 
-  console.log(`Proxy GET → ${targetUrl}`); // debug
+  console.log(`Proxy GET → ${targetUrl}`); 
 
   try {
-    // Forward semua header (termasuk Authorization)
     const headers = new Headers(request.headers);
 
     const response = await fetch(targetUrl, {
@@ -51,7 +48,6 @@ export async function GET(request: NextRequest) {
   }
 }
 
-// Optional: handle OPTIONS untuk preflight
 export async function OPTIONS() {
   return new NextResponse(null, {
     status: 204,
